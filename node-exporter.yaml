@@ -1,0 +1,75 @@
+#here it will create node-exporter namespace##
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: expense
+
+---
+
+##here it will create service for nord exporter to expose internet ###
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-exporter
+  namespace: expense
+spec:
+  selector:
+    app: node-exporter
+  ports:
+  - name: metrics
+    protocol: TCP
+    port: 9100
+    targetPort: 9100
+  type: NodePort
+
+---
+
+###deamon-set for nord exporter every pod should run every node it will decide ###
+
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-exporter
+  namespace: expense
+  labels:
+    app: node-exporter
+spec:
+  selector:
+    matchLabels:
+      app: node-exporter
+  template:
+    metadata:
+      labels:
+        app: node-exporter
+    spec:
+      containers:
+      - name: node-exporter
+        image: prom/node-exporter:latest
+        ports:
+        - containerPort: 9100
+          hostPort: 9100
+        args:
+        - --path.procfs=/host/proc
+        - --path.sysfs=/host/sys
+        - --path.rootfs=/rootfs
+        volumeMounts:
+        - name: proc
+          mountPath: /host/proc
+          readOnly: true
+        - name: sys
+          mountPath: /host/sys
+          readOnly: true
+        - name: root
+          mountPath: /rootfs
+          readOnly: true
+      volumes:
+      - name: proc
+        hostPath:
+          path: /proc
+      - name: sys
+        hostPath:
+          path: /sys
+      - name: root
+        hostPath:
+          path: /
