@@ -58,9 +58,9 @@ spec:
       - name: mysql
         image: joindevops/mysql:v1.0
         imagePullPolicy: Always
-        volumeMounts:
-        - name: mysql
-          mountPath: /var/lib/mysql
+        # volumeMounts:
+        # - name: mysql
+        #   mountPath: /var/lib/mysql
   # PVC declaration, it is mandatory
   # volumeClaimTemplates:
   # - metadata:
