@@ -71,3 +71,19 @@ spec:
       resources:
         requests:
           storage: 1G
+
+
+# Sure! Here's a clearer explanation:
+
+# In Kubernetes, volumeMount is used to attach storage (called a Volume) to a container inside a pod.
+
+# Why we use it:
+# Containers lose data when they stop or restart — they are temporary.
+
+# A Volume keeps data safe outside the container, even if the container crashes.
+
+# volumeMount tells where inside the container the volume should appear (like /app/data).
+
+# This lets containers share files, save logs, configs, or persistent data across restarts or between pods.
+
+# Think of it like connecting an external hard drive to a laptop — so the data stays safe even if the laptop restarts.
