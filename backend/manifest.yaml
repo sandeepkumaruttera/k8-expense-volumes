@@ -54,3 +54,7 @@ spec:
   - protocol: TCP
     port: 8080 #service-port
     targetPort: 8080 #target-port
+
+
+#So clients connect to port 8080, and it gets internally redirected to port 8080 on the container.
+

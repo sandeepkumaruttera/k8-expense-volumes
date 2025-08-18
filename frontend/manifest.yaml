@@ -152,3 +152,9 @@ spec:
   - protocol: TCP
     port: 80 #service-port
     targetPort: 8080 #target-port
+
+#So clients connect to port 80, and it gets internally redirected to port 8080 on the container.
+
+
+#80 means frontend, targetport means 8080 it should connect to application server backend 
+

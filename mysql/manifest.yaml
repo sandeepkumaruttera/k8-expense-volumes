@@ -58,19 +58,19 @@ spec:
       - name: mysql
         image: joindevops/mysql:v1.0
         imagePullPolicy: Always
-        volumeMounts:
-        - name: mysql
-          mountPath: /var/lib/mysql
- # PVC declaration, it is mandatory
-  volumeClaimTemplates:
-  - metadata:
-      name: mysql
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "expense-ebs"
-      resources:
-        requests:
-          storage: 1G
+#         volumeMounts:
+#         - name: mysql
+#           mountPath: /var/lib/mysql
+#  # PVC declaration, it is mandatory
+#   volumeClaimTemplates:
+#   - metadata:
+#       name: mysql
+#     spec:
+#       accessModes: [ "ReadWriteOnce" ]
+#       storageClassName: "expense-ebs"
+#       resources:
+#         requests:
+#           storage: 1G
 
 
 # Sure! Here's a clearer explanation:
