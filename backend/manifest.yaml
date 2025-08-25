@@ -4,7 +4,7 @@ metadata:
   name: backend
   namespace: expense
 data:
-  DB_HOST: database-1.cox4q0mwma2l.us-east-1.rds.amazonaws.com # mysql component service name  or when u doing RDS THEN need to keep RDS endpoint here
+  DB_HOST: mysql # mysql component service name  or when u doing RDS THEN need to keep RDS endpoint here
 ---
 kind: Deployment
 apiVersion: apps/v1
